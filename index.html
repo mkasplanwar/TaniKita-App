@@ -67,7 +67,7 @@
             border-radius: 5px;
         }
 
-        .dark-mode-toggle {
+        .user-toggle {
             font-size: 20px;
             color: #ffffff;
             transition: color 0.3s ease;
@@ -81,7 +81,7 @@
             cursor: pointer;
         }
 
-        .dark-mode-toggle:hover {
+        .user-toggle:hover {
             background-color: rgba(255, 255, 255, 0.3);
         }
 
@@ -177,7 +177,7 @@
                 <a href="#tentang">TENTANG</a>
                 <a href="#hubungi">HUBUNGI</a>
             </div>
-            <div class="dark-mode-toggle" onclick="toggleDarkMode()">
+            <div class="user-toggle">
                 <i id="theme-icon" class="fa-solid fa-user"></i>
             </div>
         </div>
@@ -201,22 +201,6 @@
             const overlay = document.querySelector('.overlay');
             menu.classList.toggle('active');
             overlay.classList.toggle('active');
-        }
-
-        function toggleDarkMode() {
-            const body = document.body;
-            const themeIcon = document.getElementById('theme-icon');
-
-            body.classList.toggle('dark-mode');
-
-            // Change the icon based on the theme
-            if (body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-user');
-                themeIcon.classList.add('fa-moon');
-            } else {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-user');
-            }
         }
     </script>
 </body>
