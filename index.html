@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="icon" href="src/imgs/favicon.png" type="image/png">
-    
     <style>
         /* General Reset */
         * {
@@ -100,7 +99,6 @@
             color: #ffffff;
         }
 
-        /* Off-Canvas Menu Styles */
         .menu {
             display: flex;
             flex-direction: row;
@@ -151,15 +149,44 @@
             display: block;
         }
 
-        /* Content Styles */
-        .content {
-            margin-top: 100px;
-            padding: 20px;
+        /* Section Styles */
+        section {
+            padding: 100px 20px;
+            text-align: center;
         }
 
-        .content p {
-            margin-bottom: 10px;
+        #home {
+            background: url('https://img.freepik.com/free-photo/beautiful-strawberry-garden-sunrise-doi-ang-khang-chiang-mai-thailand_335224-761.jpg?t=st=1735044823~exp=1735048423~hmac=13f6c68d4c3b1bd19a7bf7fd4f00b1ea7334307c236ea28253ce72577fe91401&w=996') no-repeat center center/cover;
+            color: white;
+            padding: 150px 20px;
+        }
+
+        #produk {
+            background-color: #f1f1f1;
+        }
+
+        #tentang {
+            background-color: #fff;
+        }
+
+        #hubungi {
+            background-color: #e7f9e7;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
             line-height: 1.6;
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -189,12 +216,25 @@
     <div class="overlay" onclick="toggleMenu()"></div>
 
     <!-- Main Content -->
-    <div class="content">
+    <section id="home">
         <h1>Welcome to TaniKita</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel mauris lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-        <p>Nulla facilisi. Integer euismod leo a risus tempor, ut eleifend nulla tristique. Donec sed tellus at quam suscipit volutpat sit amet nec libero.</p>
-        <p>Proin et nunc nec mi venenatis gravida. Cras vitae odio at quam varius auctor ut vel libero. Etiam euismod lacus id ante viverra, eget suscipit eros posuere.</p>
-    </div>
+        <p>Connecting Farmers Directly to Consumers</p>
+    </section>
+
+    <section id="produk">
+        <h1>Our Products</h1>
+        <p>Fresh, organic, and directly from local farmers to you.</p>
+    </section>
+
+    <section id="tentang">
+        <h1>About Us</h1>
+        <p>TaniKita is a platform dedicated to empowering farmers and providing fresh produce to consumers.</p>
+    </section>
+
+    <section id="hubungi">
+        <h1>Contact Us</h1>
+        <p>Have questions or need help? Reach out to us anytime.</p>
+    </section>
 
     <!-- JavaScript for Interactivity -->
     <script>

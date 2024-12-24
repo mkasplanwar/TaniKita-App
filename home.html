@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage Clone</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 80px;
+        }
+
+        .content {
+            max-width: 50%;
+        }
+
+        .content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 0;
+            color: #000;
+        }
+
+        .content h1 span {
+            color: #FF7F00;
+        }
+
+        .content p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 1rem 0;
+        }
+
+        .content button {
+            background-color: #FF7F00;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+        .content button:hover {
+            background-color: #e56d00;
+        }
+
+        .illustration {
+            max-width: 40%;
+            position: relative;
+        }
+
+        .illustration img {
+            width: 100%;
+            height: auto;
+        }
+
+        .illustration .code-snippet {
+            position: absolute;
+            bottom: -20px;
+            left: 10%;
+            background-color: #333;
+            color: #fff;
+            font-family: monospace;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .illustration .code-snippet span {
+            color: #FF7F00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>MAKE <span>IT</span> FOR EVERYONE.</h1>
+            <p>An IT organization based in Gadjah Mada University that are passionate about working on project, competition and of course teaching others.</p>
+            <button>Let&#39;s Talk</button>
+        </div>
+        <div class="illustration">
+            <img src="https://via.placeholder.com/300x400" alt="Illustration">
+            <div class="code-snippet">
+                <span>@omahti</span> official-site @ npm run dev
+            </div>
+        </div>
+    </div>
+</body>
+</html>
