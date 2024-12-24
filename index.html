@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="icon" href="src/imgs/favicon.png" type="image/png">
+    
     <style>
         /* General Reset */
         * {
@@ -99,6 +100,7 @@
             color: #ffffff;
         }
 
+        /* Off-Canvas Menu Styles */
         .menu {
             display: flex;
             flex-direction: row;
@@ -149,44 +151,34 @@
             display: block;
         }
 
-        /* Section Styles */
-        section {
-            padding: 100px 20px;
-            text-align: center;
-        }
+       
+.main-content {
+    margin-top: 100px; /* Memberikan ruang di bawah navbar */
+    position: relative;
+    min-height: 100vh; /* Membiarkan tinggi konten lebih dari 100vh agar bisa digulir */
+    background-image: url('https://static.wixstatic.com/media/296e62_ce003c1084b845f2a5be4bb34eb15bc3~mv2.jpg/v1/fill/w_1636,h_1080,al_c,q_85,enc_avif,quality_auto/296e62_ce003c1084b845f2a5be4bb34eb15bc3~mv2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 100px; /* Menambahkan padding untuk menjaga jarak dari navbar */
+}
 
-        #home {
-            background: url('https://img.freepik.com/free-photo/beautiful-strawberry-garden-sunrise-doi-ang-khang-chiang-mai-thailand_335224-761.jpg?t=st=1735044823~exp=1735048423~hmac=13f6c68d4c3b1bd19a7bf7fd4f00b1ea7334307c236ea28253ce72577fe91401&w=996') no-repeat center center/cover;
-            color: white;
-            padding: 150px 20px;
-        }
 
-        #produk {
-            background-color: #f1f1f1;
-        }
-
-        #tentang {
-            background-color: #fff;
-        }
-
-        #hubungi {
-            background-color: #e7f9e7;
-        }
-
-        h1 {
-            font-size: 2.5rem;
+        .main-content h1 {
+            font-size: 48px;
+            font-weight: bold;
             margin-bottom: 20px;
         }
 
-        p {
-            line-height: 1.6;
-        }
-
-        /* Responsive Typography */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
+        .main-content p {
+            font-size: 20px;
+            width: 60%;
+            margin: 10px auto;
         }
     </style>
 </head>
@@ -215,26 +207,10 @@
     <!-- Overlay -->
     <div class="overlay" onclick="toggleMenu()"></div>
 
-    <!-- Main Content -->
-    <section id="home">
-        <h1>Welcome to TaniKita</h1>
-        <p>Connecting Farmers Directly to Consumers</p>
-    </section>
-
-    <section id="produk">
-        <h1>Our Products</h1>
-        <p>Fresh, organic, and directly from local farmers to you.</p>
-    </section>
-
-    <section id="tentang">
-        <h1>About Us</h1>
-        <p>TaniKita is a platform dedicated to empowering farmers and providing fresh produce to consumers.</p>
-    </section>
-
-    <section id="hubungi">
-        <h1>Contact Us</h1>
-        <p>Have questions or need help? Reach out to us anytime.</p>
-    </section>
+    <!-- Main Content with Background Image -->
+    <div class="main-content">
+        
+    </div>
 
     <!-- JavaScript for Interactivity -->
     <script>

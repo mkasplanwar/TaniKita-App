@@ -8,8 +8,12 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #ffffff;
+            background: linear-gradient(to top, #72bf78, rgba(72, 191, 120, 0) 60%), url('https://img.freepik.com/free-photo/beautiful-strawberry-garden-sunrise-doi-ang-khang-chiang-mai-thailand_335224-761.jpg?t=st=1735044823~exp=1735048423~hmac=13f6c68d4c3b1bd19a7bf7fd4f00b1ea7334307c236ea28253ce72577fe91401&w=996') no-repeat center center/cover;
             color: #333;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
@@ -18,7 +22,7 @@
             justify-content: space-between;
             padding: 2rem;
             max-width: 1200px;
-            margin: 0 80px;
+            margin: 0;
         }
 
         .content {
@@ -58,28 +62,11 @@
 
         .illustration {
             max-width: 40%;
-            position: relative;
         }
 
         .illustration img {
             width: 100%;
             height: auto;
-        }
-
-        .illustration .code-snippet {
-            position: absolute;
-            bottom: -20px;
-            left: 10%;
-            background-color: #333;
-            color: #fff;
-            font-family: monospace;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .illustration .code-snippet span {
-            color: #FF7F00;
         }
     </style>
 </head>
@@ -92,9 +79,6 @@
         </div>
         <div class="illustration">
             <img src="https://via.placeholder.com/300x400" alt="Illustration">
-            <div class="code-snippet">
-                <span>@omahti</span> official-site @ npm run dev
-            </div>
         </div>
     </div>
 </body>
