@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaniKita - Platform Penghubung Petani dan Konsumen</title>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2ECC71;
+            --primary-dark: #27AE60;
+            --secondary-color: #F39C12;
+            --accent-color: #3498DB;
+            --text-dark: #2C3E50;
+            --text-light: #ECF0F1;
+            --bg-light: #F8FAFC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+/* Z-index layers */
+:root {
+    /* ... variabel warna yang ada ... */
+    
+    /* Tambahkan variabel z-index */
+    --z-navbar: 1000;
+    --z-overlay: 1100;
+    --z-offcanvas: 1200;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #72bf78;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: var(--z-navbar);
+    height: 80px;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 2rem;
+}
+
+/* Logo Styles */
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-image {
+    height: 40px; /* Sesuaikan dengan kebutuhan */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Untuk off-canvas menu */
+.off-canvas-header .logo-image {
+    height: 35px; /* Sedikit lebih kecil di menu mobile */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .logo-image {
+        height: 35px; /* Ukuran logo lebih kecil di mobile */
+    }
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.logo-highlight {
+    color: var(--primary-color);
+}
+
+/* Desktop Menu */
+.desktop-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/*.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
+    background-color: #ffffff;
+    border-radius: 50px;
+
+}*/
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-login {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+/*.btn-login:hover {
+    background: rgba(46, 204, 113, 0.1);
+}*/
+
+.btn-register {
+    text-decoration: none;
+    color: white;
+    background: var(--primary-color);
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Off-canvas Menu */
+.off-canvas-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    padding: 2rem;
+    transition: transform 0.3s ease;
+    z-index: var(--z-offcanvas); /* Z-index tertinggi */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.off-canvas-menu.active {
+    transform: translateX(-300px);
+}
+
+.off-canvas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.close-menu {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.off-canvas-content .nav-links {
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.off-canvas-content .nav-buttons {
+    flex-direction: column;
+}
+
+.off-canvas-content .btn-login,
+.off-canvas-content .btn-register {
+    text-align: center;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: var(--z-overlay);
+    pointer-events: auto; /* Pastikan overlay bisa menerima klik */
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+/* Toggle Button */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: block;
+        z-index: var(--z-navbar);
+    }
+
+    .off-canvas-menu {
+        padding-top: 1rem;
+    }
+
+    .off-canvas-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .off-canvas-content {
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+}
+
+/* Adjust hero section */
+.hero-section {
+    padding-top: 70px; /* Same as navbar height */
+}
+
+.container {
+    padding-top: 2rem;
+}
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #ffffff 100%);
+            overflow: hidden;
+        }
+
+        /* Animated Background Elements */
+        .bg-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-color);
+            top: -100px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--secondary-color);
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .dots-pattern {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: radial-gradient(var(--accent-color) 2px, transparent 2px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            top: 20%;
+            right: 10%;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            min-height: calc(100vh - 4rem);
+        }
+
+        /* Left Content Section */
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(46, 204, 113, 0.1);
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge i {
+            font-size: 1.2rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(46, 204, 113, 0.2);
+            z-index: -1;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #64748B;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Buttons */
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(46, 204, 113, 0.1);
+        }
+
+        /* Right Content - Image Section */
+        .hero-image-container {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Floating Cards */
+        .feature-card {
+            position: absolute;
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .card-farmer {
+            top: 10%;
+            left: -15%;
+        }
+
+        .card-delivery {
+            bottom: 20%;
+            right: -15%;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-image-container {
+                order: -1;
+            }
+
+            .feature-card {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="container nav-container">
+                <div class="nav-logo">
+                    <a href="/">
+                        <img src="src/imgs/tanikita.png" alt="TaniKita Logo" class="logo-image">
+                    </a>
+                </div>
+                
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+    
+                <!-- Desktop Menu -->
+                <div class="desktop-menu">
+                    <ul class="nav-links">
+                        <li><a href="#beranda" class="nav-link active">Beranda</a></li>
+                        <li><a href="#produk" class="nav-link">Produk</a></li>
+                        <li><a href="#tentang" class="nav-link">Tentang Kami</a></li>
+                        <li><a href="#kontak" class="nav-link">Kontak</a></li>
+                    </ul>
+                    <div class="nav-buttons">
+                        <a href="#masuk" class="btn-login">Masuk</a>
+                        <a href="#daftar" class="btn-register">Daftar</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Off-canvas Menu (di luar navbar) -->
+        <div class="off-canvas-menu" id="offCanvasMenu">
+            <div class="off-canvas-header">
+                <div class="nav-logo">
+                    <img src="src/imgs/tanikita.png" alt="TaniKita Logo" class="logo-image">
+                </div>
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="off-canvas-content">
+                <ul class="nav-links">
+                    <li><a href="#beranda" class="nav-link active">Beranda</a></li>
+                    <li><a href="#produk" class="nav-link">Produk</a></li>
+                    <li><a href="#tentang" class="nav-link">Tentang Kami</a></li>
+                    <li><a href="#kontak" class="nav-link">Kontak</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="#masuk" class="btn-login">Masuk</a>
+                    <a href="#daftar" class="btn-register">Daftar</a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Overlay (di luar navbar) -->
+        <div class="overlay" id="overlay"></div>
+    
+       
+        
+
+    <section class="hero-section">
+        <div class="bg-elements">
+            <div class="bg-circle circle-1"></div>
+            <div class="bg-circle circle-2"></div>
+            <div class="dots-pattern"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-star"></i>
+                        Platform Agribisnis Digital #1
+                    </div>
+
+                    <h1 class="hero-title">
+                        Menghubungkan <span class="highlight">Petani</span> dengan <span class="highlight">Konsumen</span> Secara Langsung
+                    </h1>
+
+                    <p class="hero-description">
+                        TaniKita hadir sebagai solusi digital yang menghubungkan petani lokal dengan UMKM dan konsumen secara langsung. Dapatkan hasil tani berkualitas dengan harga terbaik tanpa perantara.
+                    </p>
+
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-number">10,000+</div>
+                            <div class="stat-label">Petani Terdaftar</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">5,000+</div>
+                            <div class="stat-label">UMKM Partner</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Kota di Indonesia</div>
+                        </div>
+                    </div>
+
+                    <div class="cta-group">
+                        <a href="#daftar" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i>
+                            Daftar Sekarang
+                        </a>
+                        <a href="#pelajari" class="btn btn-secondary">
+                            <i class="fas fa-info-circle"></i>
+                            Pelajari Lebih Lanjut
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-image-container">
+                    <img src="https://img.freepik.com/free-photo/asian-farmer-woman-working-with-laptop-organic-vegetable-hydroponic-farm-hydroponic-salad-garden-owner-checking-quality-vegetable-greenhouse-plantation_1150-55819.jpg?t=st=1735109171~exp=1735112771~hmac=cf71b97b84ba4cfb1ba49f0ba618956a36daab612d3cf0bff1817e1f86045094&w=996" 
+                         alt="TaniKita Platform" 
+                         class="hero-image">
+                    
+                    <div class="feature-card card-farmer">
+                        <div class="feature-icon">
+                            <i class="fas fa-tractor"></i>
+                        </div>
+                        <div>
+                            <h4>Petani Terverifikasi</h4>
+                            <p>Kualitas Terjamin</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card card-delivery">
+                        <div class="feature-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div>
+                            <h4>Pengiriman Cepat</h4>
+                            <p>Seluruh Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Get DOM elements
+        const navToggle = document.getElementById('navToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const offCanvasMenu = document.getElementById('offCanvasMenu');
+        const overlay = document.getElementById('overlay');
+    
+        // Toggle menu
+        navToggle.addEventListener('click', () => {
+            offCanvasMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        });
+    
+        // Close menu function
+        const closeOffCanvasMenu = () => {
+            offCanvasMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        };
+    
+        // Event listeners for closing menu
+        closeMenu.addEventListener('click', closeOffCanvasMenu);
+        overlay.addEventListener('click', closeOffCanvasMenu);
+    
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.off-canvas-menu .nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeOffCanvasMenu);
+        });
+    
+        // Handle escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && offCanvasMenu.classList.contains('active')) {
+                closeOffCanvasMenu();
+            }
+        });
+    </script>
+</body>
+</html>

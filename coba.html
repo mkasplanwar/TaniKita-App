@@ -1,207 +1,360 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agribisnis Modern</title>
-  <style>
-    /* Global Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaniKita - Platform Agribisnis Modern</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f4f4;
-      overflow-x: hidden;
-    }
+        :root {
+            --primary: #00A67E;
+            --secondary: #F7FAF9;
+            --dark: #1A1D1F;
+            --gray: #6C7275;
+        }
 
-    /* Hero Section */
-    .hero {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 60px 10%;
-      height: 100vh;
-      background: linear-gradient(135deg, #72bf78, #a8e063);
-      overflow: hidden;
-    }
+        .hero {
+            min-height: 100vh;
+            background-color: var(--secondary);
+            position: relative;
+            overflow: hidden;
+            padding: 0 24px;
+        }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -100px;
-      left: -100px;
-      width: 600px;
-      height: 600px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      filter: blur(100px);
-      z-index: 0;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 120px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      bottom: -150px;
-      right: -150px;
-      width: 400px;
-      height: 400px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      filter: blur(100px);
-      z-index: 0;
-    }
+        /* Left Side Content */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
 
-    .hero .content {
-      color: #fff;
-      z-index: 1;
-      max-width: 600px;
-    }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(0, 166, 126, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            gap: 8px;
+        }
 
-    .hero .content h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      line-height: 1.2;
-    }
+        .badge svg {
+            width: 16px;
+            height: 16px;
+        }
 
-    .hero .content p {
-      font-size: 1.2rem;
-      margin: 20px 0;
-      line-height: 1.6;
-    }
+        .hero-title {
+            font-size: 56px;
+            line-height: 1.2;
+            color: var(--dark);
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
 
-    .hero .content .cta {
-      display: inline-block;
-      padding: 15px 30px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #72bf78;
-      background-color: #fff;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+        .highlight {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
 
-    .hero .content .cta:hover {
-      background-color: #f4f4f4;
-      transform: translateY(-3px);
-    }
+        .highlight::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            bottom: 8px;
+            left: 0;
+            background-color: rgba(0, 166, 126, 0.2);
+            z-index: -1;
+        }
 
-    .hero .image-container {
-      position: relative;
-      z-index: 1;
-    }
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
 
-    .hero .image-container img {
-      width: 500px;
-      max-width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
-      transform: scale(1);
-      transition: transform 0.5s ease;
-    }
+        .metrics {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
 
-    .hero .image-container img:hover {
-      transform: scale(1.05);
-    }
+        .metric-item {
+            flex: 1;
+        }
 
-    /* Floating Icons */
-    .floating-icons {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
 
-    .icon {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      animation: move 10s infinite;
-    }
+        .metric-label {
+            font-size: 14px;
+            color: var(--gray);
+        }
 
-    .icon:nth-child(1) {
-      top: 20%;
-      left: 10%;
-      animation-delay: 0s;
-    }
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+        }
 
-    .icon:nth-child(2) {
-      top: 40%;
-      left: 30%;
-      animation-delay: 2s;
-    }
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
 
-    .icon:nth-child(3) {
-      top: 60%;
-      left: 70%;
-      animation-delay: 4s;
-    }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
 
-    .icon:nth-child(4) {
-      top: 80%;
-      left: 50%;
-      animation-delay: 6s;
-    }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 166, 126, 0.2);
+        }
 
-    @keyframes move {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
-    }
+        .btn-secondary {
+            background: transparent;
+            color: var(--dark);
+            border: 2px solid #E8ECEF;
+        }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column-reverse;
-        text-align: center;
-        padding: 20px;
-      }
+        .btn-secondary:hover {
+            background: #F7FAF9;
+        }
 
-      .hero .content {
-        max-width: 100%;
-      }
+        /* Right Side Image */
+        .hero-image {
+            position: relative;
+            z-index: 1;
+        }
 
-      .hero .content h1 {
-        font-size: 2.5rem;
-      }
+        .main-image {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1);
+        }
 
-      .hero .image-container img {
-        width: 300px;
-      }
-    }
-  </style>
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-farmers {
+            top: 10%;
+            left: -10%;
+        }
+
+        .card-consumers {
+            bottom: 10%;
+            right: -5%;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-text h4 {
+            color: var(--dark);
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .card-text p {
+            color: var(--gray);
+            font-size: 12px;
+        }
+
+        /* Background Elements */
+        .bg-pattern {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .pattern-1 {
+            top: 5%;
+            right: 5%;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, rgba(0, 166, 126, 0.1) 0%, rgba(0, 166, 126, 0.05) 100%);
+            border-radius: 24px;
+            transform: rotate(-15deg);
+        }
+
+        .pattern-2 {
+            bottom: 10%;
+            left: 5%;
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, rgba(0, 166, 126, 0.08) 0%, rgba(0, 166, 126, 0.03) 100%);
+            border-radius: 50%;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 80px;
+            }
+
+            .hero-content {
+                order: 2;
+            }
+
+            .hero-image {
+                order: 1;
+            }
+
+            .hero-description {
+                margin: 0 auto 40px;
+            }
+
+            .metrics {
+                justify-content: center;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .floating-card {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 40px;
+            }
+
+            .metrics {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <section class="hero">
-    <div class="content">
-      <h1>Agribisnis Modern untuk Masa Depan</h1>
-      <p>Kami menghadirkan produk segar langsung dari petani kepada konsumen, tanpa perantara. Dapatkan kualitas terbaik dengan harga yang adil.</p>
-      <a href="#explore" class="cta">Jelajahi Produk</a>
-    </div>
-    <div class="image-container">
-      <img src="https://img.freepik.com/free-photo/farmers-are-working-chinese-cabbage-farm_1150-7104.jpg?t=st=1735088555~exp=1735092155~hmac=a3bc42744eb0206d6acc016d49985c23bb48d116bd0b4611858390e562413dbd&w=996" alt="Produk Agribisnis">
-    </div>
-    <div class="floating-icons">
-      <div class="icon"></div>
-      <div class="icon"></div>
-      <div class="icon"></div>
-      <div class="icon"></div>
-    </div>
-  </section>
+    <section class="hero">
+        <div class="bg-pattern pattern-1"></div>
+        <div class="bg-pattern pattern-2"></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M8 1.5C4.41015 1.5 1.5 4.41015 1.5 8C1.5 11.5899 4.41015 14.5 8 14.5C11.5899 14.5 14.5 11.5899 14.5 8C14.5 4.41015 11.5899 1.5 8 1.5Z" stroke="#00A67E" stroke-width="1.5"/>
+                        <path d="M8 4.5V8L10.5 9.5" stroke="#00A67E" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    Platform Agribisnis Digital
+                </div>
+
+                <h1 class="hero-title">
+                    Menghubungkan <span class="highlight">Petani</span> dengan <span class="highlight">Pasar</span> Modern
+                </h1>
+
+                <p class="hero-description">
+                    TaniKita memudahkan petani lokal untuk menjangkau UMKM dan konsumen langsung. 
+                    Nikmati hasil tani berkualitas dengan harga transparan.
+                </p>
+
+                <div class="metrics">
+                    <div class="metric-item">
+                        <div class="metric-value">1,000+</div>
+                        <div class="metric-label">Petani Aktif</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">50+</div>
+                        <div class="metric-label">Kota</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">5,000+</div>
+                        <div class="metric-label">Transaksi</div>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <button class="btn btn-primary">Mulai Sekarang</button>
+                    <button class="btn btn-secondary">Pelajari Lebih Lanjut</button>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="https://source.unsplash.com/random/800x600/?farming,agriculture" 
+                     alt="TaniKita Platform" 
+                     class="main-image">
+                
+                <div class="floating-card card-farmers">
+                    <div class="card-icon">
+                        🌾
+                    </div>
+                    <div class="card-text">
+                        <h4>Petani Terverifikasi</h4>
+                        <p>Hasil panen terjamin</p>
+                    </div>
+                </div>
+
+                <div class="floating-card card-consumers">
+                    <div class="card-icon">
+                        🏪
+                    </div>
+                    <div class="card-text">
+                        <h4>UMKM & Konsumen</h4>
+                        <p>Harga transparan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
