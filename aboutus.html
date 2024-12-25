@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Founders | TaniKita</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00BFA6;
+            --secondary: #00A896;
+            --dark: #2D3436;
+            --light: #F7F9FC;
+            --gray: #636E72;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .founders-section {
+            min-height: 100vh;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(0, 191, 166, 0.1);
+            color: var(--primary);
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray);
+        }
+
+        .founders-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .founder-card {
+            width: 400px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .founder-image {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .founder-card:hover .founder-image img {
+            transform: scale(1.05);
+        }
+
+        .founder-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.8) 0%,
+                transparent 100%
+            );
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .founder-card:hover .founder-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .founder-info {
+            padding: 30px;
+            background: white;
+        }
+
+        .founder-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .founder-role {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .founder-quote {
+            position: relative;
+            padding: 24px;
+            background: var(--light);
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+
+        .quote-icon {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .founder-quote p {
+            font-style: italic;
+            color: var(--gray);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .founder-bio {
+            color: var(--gray);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 1200px) {
+            .founders-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .founder-card {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 36px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .founder-image {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 28px;
+            }
+
+            .founder-info {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="founders-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="tag">Our Founders</span>
+                <h1 class="section-title">Meet Our Visionaries</h1>
+                <p class="section-subtitle">
+                    Bertemu dengan para pendiri yang berdedikasi mengubah wajah pertanian Indonesia
+                    melalui inovasi teknologi
+                </p>
+            </div>
+
+            <div class="founders-grid">
+                <!-- Founder 1 -->
+                <div class="founder-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="founder-image">
+                        <img src="src/imgs/anwar.JPG" alt="Andi Pratama">
+                        <div class="founder-overlay">
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="founder-info">
+                        <h2 class="founder-name">Andi Pratama</h2>
+                        <span class="founder-role">CEO & Co-Founder</span>
+                        <div class="founder-quote">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>"Mengubah tantangan menjadi peluang untuk petani Indonesia."</p>
+                        </div>
+                        <p class="founder-bio">
+                            Alumni ITB dengan pengalaman 8+ tahun di teknologi pertanian. 
+                            Memiliki visi untuk memberdayakan petani Indonesia melalui 
+                            teknologi modern.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Founder 2 -->
+                <div class="founder-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="founder-image">
+                        <img src="src/imgs/rafly.jpg" alt="Maya Wijaya">
+                        <div class="founder-overlay">
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="founder-info">
+                        <h2 class="founder-name">Maya Wijaya</h2>
+                        <span class="founder-role">CTO & Co-Founder</span>
+                        <div class="founder-quote">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>"Inovasi teknologi adalah kunci pertanian masa depan."</p>
+                        </div>
+                        <p class="founder-bio">
+                            Stanford graduate dengan spesialisasi AI dan Machine Learning. 
+                            Berdedikasi dalam mengembangkan solusi teknologi yang memajukan 
+                            sektor pertanian.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Smooth scroll and parallax effect
+        const founderCards = document.querySelectorAll('.founder-card');
+        
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            
+            founderCards.forEach(card => {
+                const speed = 0.2;
+                const rect = card.getBoundingClientRect();
+                const centerPosition = rect.top + rect.height / 2;
+                const viewportCenter = window.innerHeight / 2;
+                const distance = centerPosition - viewportCenter;
+                
+                if (Math.abs(distance) < window.innerHeight) {
+                    card.style.transform = `translateY(${distance * speed}px)`;
+                }
+            });
+        });
+
+        // Social links hover effect
+        document.querySelectorAll('.social-link').forEach((link, index) => {
+            link.style.transitionDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
