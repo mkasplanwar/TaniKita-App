@@ -130,7 +130,7 @@ transition: all 0.3s ease;
 }
 
 .btn-login:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
 }
 
 .btn-register {
@@ -145,7 +145,7 @@ transition: all 0.3s ease;
 
 .btn-register:hover {
 
-transform: translateY(-10px);
+transform: translateY(-5px);
 }
 
 /* Off-canvas Menu */
