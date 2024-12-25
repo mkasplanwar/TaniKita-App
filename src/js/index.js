@@ -34,3 +34,41 @@ document.addEventListener('keydown', (e) => {
         closeOffCanvasMenu();
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const buyerFlow = document.getElementById('buyerFlow');
+    const sellerFlow = document.getElementById('sellerFlow');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            tabBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+
+            // Show corresponding flow
+            if (btn.dataset.tab === 'buyer') {
+                buyerFlow.classList.remove('hidden');
+                sellerFlow.classList.add('hidden');
+                animateSteps(buyerFlow);
+            } else {
+                sellerFlow.classList.remove('hidden');
+                buyerFlow.classList.add('hidden');
+                animateSteps(sellerFlow);
+            }
+        });
+    });
+
+    function animateSteps(flow) {
+        const steps = flow.querySelectorAll('.step-card');
+        steps.forEach((step, index) => {
+            step.style.opacity = '0';
+            setTimeout(() => {
+                step.classList.add('fade-in');
+            }, index * 100);
+        });
+    }
+
+    // Initial animation
+    animateSteps(buyerFlow);
+});

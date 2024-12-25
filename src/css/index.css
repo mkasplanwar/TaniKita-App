@@ -893,3 +893,137 @@ padding-top: 2rem;
         height: 40px; /* Sedikit lebih kecil di mobile */
     }
 }
+.order-guide {
+    padding: 4rem 0;
+    background: #f8fafc;
+}
+
+.guide-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.guide-header h2 {
+    font-size: 2rem;
+    color: #1a1f2c;
+    margin-bottom: 1.5rem;
+}
+
+.tab-switch {
+    display: inline-flex;
+    background: #fff;
+    padding: 0.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.tab-btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    background: none;
+    border-radius: 8px;
+    font-weight: 500;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.steps-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.steps-flow.hidden {
+    display: none;
+}
+
+.step-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+    min-width: 180px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.step-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(46, 204, 113, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.step-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.step-card h3 {
+    color: #1a1f2c;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+.step-card p {
+    color: #64748b;
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+.step-arrow {
+    color: #cbd5e1;
+    font-size: 1.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .steps-flow {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .step-arrow {
+        transform: rotate(90deg);
+    }
+
+    .step-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
