@@ -129,9 +129,9 @@ border-radius: 50px;
 transition: all 0.3s ease;
 }
 
-/*.btn-login:hover {
-background: rgba(46, 204, 113, 0.1);
-}*/
+.btn-login:hover {
+    transform: translateY(-10px);
+}
 
 .btn-register {
 text-decoration: none;
@@ -144,8 +144,8 @@ transition: all 0.3s ease;
 }
 
 .btn-register:hover {
-background: var(--primary-dark);
-transform: translateY(-2px);
+
+transform: translateY(-10px);
 }
 
 /* Off-canvas Menu */
