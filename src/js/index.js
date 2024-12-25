@@ -72,3 +72,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial animation
     animateSteps(buyerFlow);
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // Add animation delays to categories
+    const categories = document.querySelectorAll('.partner-category');
+    categories.forEach((category, index) => {
+        category.style.setProperty('--animation-order', index);
+    });
+});
