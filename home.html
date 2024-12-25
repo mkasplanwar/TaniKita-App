@@ -1,85 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage Clone</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to top, #72bf78, rgba(72, 191, 120, 0) 60%), url('https://img.freepik.com/free-photo/beautiful-strawberry-garden-sunrise-doi-ang-khang-chiang-mai-thailand_335224-761.jpg?t=st=1735044823~exp=1735048423~hmac=13f6c68d4c3b1bd19a7bf7fd4f00b1ea7334307c236ea28253ce72577fe91401&w=996') no-repeat center center/cover;
-            color: #333;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agribisnis - Menghubungkan Petani dan Konsumen</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
 
-        .content {
-            max-width: 50%;
-        }
+    h1, h2, h3 {
+      margin: 0;
+    }
 
-        .content h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin: 0;
-            color: #000;
-        }
+    a {
+      text-decoration: none;
+    }
 
-        .content h1 span {
-            color: #FF7F00;
-        }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-        .content p {
-            font-size: 1rem;
-            line-height: 1.5;
-            margin: 1rem 0;
-        }
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 50px;
+      background: linear-gradient(to right, #2b9348, #55a630);
+      color: white;
+    }
 
-        .content button {
-            background-color: #FF7F00;
-            color: #fff;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
+    .hero-content {
+      max-width: 500px;
+    }
 
-        .content button:hover {
-            background-color: #e56d00;
-        }
+    .hero-content h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+    }
 
-        .illustration {
-            max-width: 40%;
-        }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin: 20px 0 30px;
+    }
 
-        .illustration img {
-            width: 100%;
-            height: auto;
-        }
-    </style>
+    .hero-content button {
+      background-color: #a3e635;
+      color: #2b9348;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .hero-content button:hover {
+      background-color: #2b9348;
+      color: white;
+    }
+
+    .hero-image {
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Features Section */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 50px;
+      background-color: #ffffff;
+    }
+
+    .feature-item {
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-item img {
+      width: 60px;
+      margin-bottom: 20px;
+    }
+
+    .feature-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-item p {
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 50px;
+      background: linear-gradient(to right, #55a630, #a3e635);
+      color: white;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .testimonial-item {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      text-align: left;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .testimonial-item img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-item p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-item h4 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="content">
-            <h1>MAKE <span>IT</span> FOR EVERYONE.</h1>
-            <p>An IT organization based in Gadjah Mada University that are passionate about working on project, competition and of course teaching others.</p>
-            <button>Let&#39;s Talk</button>
-        </div>
-        <div class="illustration">
-            <img src="https://via.placeholder.com/300x400" alt="Illustration">
-        </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Hubungkan Petani dan Konsumen Secara Langsung</h1>
+      <p>Platform kami memudahkan konsumen mendapatkan hasil tani segar langsung dari petani lokal, tanpa perantara.</p>
+      <button>Mulai Sekarang</button>
     </div>
+    <div class="hero-image">
+      <img src="https://th.bing.com/th/id/OIP.jPkRztDXQ39fiLZlMJttJwHaFj?rs=1&pid=ImgDetMain" alt="Hasil Tani Segar">
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="feature-item">
+      <img src="https://img.icons8.com/color/96/000000/farmer.png" alt="Petani">
+      <h3>Langsung dari Petani</h3>
+      <p>Hasil tani segar langsung dari petani lokal untuk memastikan kualitas terbaik.</p>
+    </div>
+    <div class="feature-item">
+      <img src="https://img.icons8.com/color/96/000000/plant.png" alt="Produk Segar">
+      <h3>Produk Segar</h3>
+      <p>Kami hanya menyediakan produk segar yang dipanen di hari yang sama untuk Anda.</p>
+    </div>
+    <div class="feature-item">
+      <img src="https://img.icons8.com/color/96/000000/money.png" alt="Harga Terjangkau">
+      <h3>Harga Terjangkau</h3>
+      <p>Tidak ada perantara, sehingga Anda mendapatkan harga terbaik dan adil.</p>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <h2>Apa Kata Mereka?</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-item">
+        <img src="https://via.placeholder.com/60" alt="User">
+        <p>"Luar biasa! Saya bisa mendapatkan sayuran segar langsung dari petani. Sangat puas dengan layanan ini!"</p>
+        <h4>- Ani, Konsumen</h4>
+      </div>
+      <div class="testimonial-item">
+        <img src="https://via.placeholder.com/60" alt="User">
+        <p>"Sebagai petani, ini sangat membantu saya untuk menjual hasil panen langsung ke konsumen. Terima kasih!"</p>
+        <h4>- Budi, Petani</h4>
+      </div>
+      <div class="testimonial-item">
+        <img src="https://via.placeholder.com/60" alt="User">
+        <p>"Sistemnya sangat mudah digunakan dan saya mendapatkan produk berkualitas tinggi setiap minggu."</p>
+        <h4>- Siti, Konsumen</h4>
+      </div>
+    </div>
+  </section>
 </body>
+
 </html>
