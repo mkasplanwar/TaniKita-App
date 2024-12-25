@@ -473,19 +473,49 @@
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
+        /* Feature Cards Styles yang Diperbarui */
+.feature-cards-container {
+    position: relative;
+    margin: 2rem 0;
+    z-index: 3;
+}
+.feature-card {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
 
-        /* Floating Cards */
-        .feature-card {
-            position: absolute;
-            background: white;
-            padding: 1rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            animation: float 5s ease-in-out infinite;
-        }
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(46, 204, 113, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+.feature-content {
+    flex: 1;
+}
+
+.feature-title {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.feature-description {
+    font-size: 0.9rem;
+    color: #64748B;
+}
 
         .card-farmer {
             top: 10%;
@@ -497,17 +527,7 @@
             right: -15%;
         }
 
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(46, 204, 113, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-        }
-
+        
         /* Animations */
         @keyframes float {
             0%, 100% {
@@ -566,6 +586,94 @@
                 justify-content: center;
             }
         }
+        /* Desktop Positioning */
+@media (min-width: 1025px) {
+    .card-farmer {
+        position: absolute;
+        top: 10%;
+        left: -15%;
+    }
+
+    .card-delivery {
+        position: absolute;
+        bottom: 20%;
+        right: -15%;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* Tablet dan Mobile Styles */
+@media (max-width: 1024px) {
+    .feature-cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        max-width: 600px;
+    }
+
+    .feature-card {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: cardSlideIn 0.5s ease-out forwards;
+    }
+
+    .card-farmer {
+        animation-delay: 0.2s;
+    }
+
+    .card-delivery {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes cardSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) {
+    .feature-cards-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 1.5rem auto;
+    }
+
+    .feature-card {
+        padding: 1rem;
+    }
+
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .feature-title {
+        font-size: 1rem;
+    }
+
+    .feature-description {
+        font-size: 0.85rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -683,25 +791,35 @@
                          alt="TaniKita Platform" 
                          class="hero-image">
                     
-                    <div class="feature-card card-farmer">
-                        <div class="feature-icon">
-                            <i class="fas fa-tractor"></i>
+                         <div class="feature-card card-farmer animate-on-scroll">
+                            <div class="feature-icon">
+                                <i class="fas fa-tractor"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="feature-title">Petani Terverifikasi</h4>
+                                <p class="feature-description">Kualitas Terjamin</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4>Petani Terverifikasi</h4>
-                            <p>Kualitas Terjamin</p>
+                        <!-- Feature card tambahan -->
+<div class="feature-card card-quality animate-on-scroll">
+    <div class="feature-icon">
+        <i class="fas fa-certificate"></i>
+    </div>
+    <div class="feature-content">
+        <h4 class="feature-title">Kualitas Premium</h4>
+        <p class="feature-description">Produk Pilihan Terbaik</p>
+    </div>
+</div>
+                
+                        <div class="feature-card card-delivery animate-on-scroll">
+                            <div class="feature-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="feature-title">Pengiriman Cepat</h4>
+                                <p class="feature-description">Seluruh Indonesia</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="feature-card card-delivery">
-                        <div class="feature-icon">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                        <div>
-                            <h4>Pengiriman Cepat</h4>
-                            <p>Seluruh Indonesia</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -743,6 +861,30 @@
                 closeOffCanvasMenu();
             }
         });
+        // Tambahkan setelah script yang sudah ada
+document.addEventListener('DOMContentLoaded', function() {
+    // Feature cards animation on mobile
+    if (window.innerWidth <= 1024) {
+        const cards = document.querySelectorAll('.feature-card');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${0.2 * (index + 1)}s`;
+        });
+    }
+
+    // Smooth scroll untuk anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
     </script>
 </body>
 </html>
