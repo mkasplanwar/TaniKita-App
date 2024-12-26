@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 80%;
+            max-width: 1000px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-box {
+            flex: 1;
+            background: #72bf78;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-box h2 {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .form-box {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-box h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .form-box form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-box label {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .form-box input {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-box button {
+            background-color: #72bf78;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-box button:hover {
+            background-color: #5ea964;
+        }
+
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .social-login button {
+            background: none;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-login button img {
+            margin-right: 10px;
+            height: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 90%;
+            }
+
+            .image-box, .form-box {
+                flex: none;
+                width: 100%;
+                padding: 20px;
+            }
+
+            .image-box h2 {
+                font-size: 1.2rem;
+            }
+
+            .form-box h2 {
+                font-size: 1.2rem;
+            }
+
+            .form-box button {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+
+            .social-login button {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-box button, .social-login button {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-box">
+            <img src="src/illustration/ilustrasi7.jpg" alt="Petani Image">
+            <h2>Very good works are waiting for you Login Now!</h2>
+        </div>
+        <div class="form-box">
+            <h2>Login</h2>
+            <form action="#">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <button type="submit">Login Now</button>
+            </form>
+            <div class="social-login">
+                <button>
+                    <img src="src/imgs/google.png" alt="Google Icon"> Login with Google
+                </button>
+                <button>
+                    <img src="src/imgs/facebook.png" alt="Facebook Icon"> Login with Facebook
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
