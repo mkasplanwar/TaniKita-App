@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Pembayaran - TaniKita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #16A34A;
+            --primary-light: #E8F5E9;
+            --warning: #F59E0B;
+            --white: #FFFFFF;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-600: #4B5563;
+            --gray-800: #1F2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--gray-50);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .payment-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header-icon {
+            color: var(--warning);
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 8px;
+        }
+
+        .header-subtitle {
+            color: var(--gray-600);
+        }
+
+        .timer {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--warning);
+            margin: 16px 0;
+        }
+
+        .payment-info {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: var(--gray-600);
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .amount {
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .qr-container {
+            text-align: center;
+            margin: 32px 0;
+        }
+
+        .qr-title {
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .qr-code {
+            background: var(--white);
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            width: fit-content;
+        }
+
+        .qr-code img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .instructions {
+            background: var(--primary-light);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+
+        .instruction-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .instruction-list {
+            list-style: none;
+        }
+
+        .instruction-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--gray-600);
+        }
+
+        .step-number {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px;
+                margin: 20px auto;
+            }
+
+            .payment-card {
+                padding: 24px;
+            }
+
+            .qr-code img {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="payment-card">
+            <div class="header">
+                <i class="fas fa-clock header-icon"></i>
+                <h1 class="header-title">Menunggu Pembayaran</h1>
+                <p class="header-subtitle">Selesaikan pembayaran sebelum batas waktu berakhir</p>
+            </div>
+
+            <div class="timer" id="countdown">23:59:59</div>
+
+            <div class="payment-info">
+                <div class="info-row">
+                    <span class="info-label">Order ID</span>
+                    <span class="info-value">#TK12345678</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Metode Pembayaran</span>
+                    <span class="info-value">QRIS</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Total Pembayaran</span>
+                    <span class="info-value amount">Rp 125.000</span>
+                </div>
+            </div>
+
+            <div class="qr-container">
+                <h3 class="qr-title">Scan QR Code untuk membayar</h3>
+                <div class="qr-code">
+                    <img src="src/imgs/qrcode.png" alt="QRIS Code">
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h3 class="instruction-title">Cara Pembayaran</h3>
+                <ul class="instruction-list">
+                    <li class="instruction-item">
+                        <span class="step-number">1</span>
+                        <span>Buka aplikasi e-wallet atau m-banking Anda</span>
+                    </li>
+                    <li class="instruction-item">
+                        <span class="step-number">2</span>
+                        <span>Pilih menu scan QR atau QRIS</span>
+                    </li>
+                    <li class="instruction-item">
+                        <span class="step-number">3</span>
+                        <span>Scan QR code yang ditampilkan di atas</span>
+                    </li>
+                    <li class="instruction-item">
+                        <span class="step-number">4</span>
+                        <span>Periksa detail pembayaran dan konfirmasi</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function startCountdown() {
+            let time = 24 * 60 * 60; // 24 hours in seconds
+            const countdownElement = document.getElementById('countdown');
+
+            const timer = setInterval(() => {
+                const hours = Math.floor(time / 3600);
+                const minutes = Math.floor((time % 3600) / 60);
+                const seconds = time % 60;
+
+                countdownElement.textContent = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                if (time === 0) {
+                    clearInterval(timer);
+                    countdownElement.textContent = "Waktu Habis";
+                    countdownElement.style.color = "#DC2626";
+                } else {
+                    time--;
+                }
+            }, 1000);
+        }
+
+        // Start the countdown when page loads
+        startCountdown();
+    </script>
+</body>
+</html>
