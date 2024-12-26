@@ -87,6 +87,7 @@ AOS.init({
         const products = [
             {
                 id: 1,
+                href: "pesan.html", // Tautan ke halaman pemesanan
                 name: "Tomat Segar Premium",
                 category: "Sayuran",
                 price: 15000,
@@ -95,6 +96,7 @@ AOS.init({
                 stock: 100,
                 sold: "50 ton"
             },
+            
             {
                 id: 2,
                 name: "Bayam Pangandaran",
@@ -231,31 +233,34 @@ AOS.init({
         }
 
         // Render products to grid
-        function renderProducts(productsToShow) {
-            productGrid.innerHTML = productsToShow.map(product => `
-                <div class="product-card">
-                    <img src="${product.image}" alt="${product.name}" class="product-image">
-                    <div class="product-info">
-                        <div class="product-category">${product.category}</div>
-                        <h3 class="product-name">${product.name}</h3>
-                        <div class="product-price">
-                            Rp ${product.price.toLocaleString('id-ID')}/kg
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                ${product.location}
-                            </div>
-                            <div>Terjual: ${product.sold}</div>
-                        </div>
-                        <button class="buy-btn" onclick="handleBuy(${product.id})">
-                            <i class="fas fa-shopping-cart"></i>
-                            Beli Sekarang
-                        </button>
-                    </div>
+function renderProducts(productsToShow) {
+    productGrid.innerHTML = productsToShow.map(product => `
+        <div class="product-card">
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <div class="product-info">
+                <div class="product-category">${product.category}</div>
+                <h3 class="product-name">${product.name}</h3>
+                <div class="product-price">
+                    Rp ${product.price.toLocaleString('id-ID')}/kg
                 </div>
-            `).join('');
-        }
+                <div class="product-meta">
+                    <div class="product-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        ${product.location}
+                    </div>
+                    <div>Terjual: ${product.sold}</div>
+                </div>
+                <a href="${product.href || '#'}" class="buy-link">
+                    <button class="buy-btn" onclick="handleBuy(${product.id})">
+                        <i class="fas fa-shopping-cart"></i>
+                        Beli Sekarang
+                    </button>
+                </a>
+            </div>
+        </div>
+    `).join('');
+}
+
 
         // Event listeners
         searchInput.addEventListener('input', filterProducts);

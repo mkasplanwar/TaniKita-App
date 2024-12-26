@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaniKita - Konfirmasi Pembelian</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="src/css/pesan.css">
+</head>
+<body>
+    <div class="container">
+        <div class="checkout-grid">
+            <!-- Main Content -->
+            <div class="main-section">
+                <div class="card">
+                    <h2 class="section-title">Detail Pesanan</h2>
+                    <div class="product-info">
+                        <img src="src/illustration/tomat.jpg" alt="Tomat Segar" class="product-image">
+                        <div class="product-details">
+                            <h3>Tomat Segar Premium</h3>
+                            <div class="price">Rp 15.000/kg</div>
+                            <div class="seller">
+                                <i class="fas fa-store"></i>
+                                Tani Sejahtera Bandung
+                            </div>
+                            <div class="quantity-control">
+                                <button class="qty-btn" onclick="updateQty(-1)">-</button>
+                                <input type="number" class="qty-input" id="qtyInput" value="1" min="1">
+                                <button class="qty-btn" onclick="updateQty(1)">+</button>
+                                <span>kg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Metode Pembayaran</h3>
+                    <div class="payment-methods">
+                        <div class="payment-option selected" onclick="selectPayment(this)">
+                            <input type="radio" name="payment" checked>
+                            <img src="src/imgs/bca.png" alt="BCA" class="payment-logo">
+                            <span>Transfer BCA</span>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment(this)">
+                            <input type="radio" name="payment">
+                            <img src="src/imgs/qris.png" alt="Mandiri" class="payment-logo">
+                            <span>Transfer Mandiri</span>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment(this)">
+                            <input type="radio" name="payment">
+                            <img src="src/imgs/gopay.png" alt="GoPay" class="payment-logo">
+                            <span>GoPay</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="summary-section">
+                <div class="card">
+                    <h2 class="section-title">Ringkasan Pesanan</h2>
+                    <div class="summary-item">
+                        <span>Harga Produk</span>
+                        <span id="productPrice">Rp 15.000</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Jumlah</span>
+                        <span id="quantity">1 kg</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Biaya Pengiriman</span>
+                        <span>Rp 10.000</span>
+                    </div>
+                    <div class="total">
+                        <span>Total</span>
+                        <span id="totalPrice">Rp 25.000</span>
+                    </div>
+                    <button class="checkout-btn" onclick="processOrder()">
+                        <i class="fas fa-shopping-cart"></i>
+                        Pesan Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/js/pesan.js"></script>
+</body>
+</html>
