@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenapa TaniKita | TaniKita</title>
+    <title>Kenapa TaniKita? | TaniKita</title>
     <style>
         :root {
             --primary: #16A34A;
@@ -21,8 +21,8 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        .feature-section {
-            padding: 120px 0;
+        .advantages-section {
+            padding: 100px 0;
             background: var(--light);
             overflow: hidden;
         }
@@ -33,12 +33,12 @@
             padding: 0 24px;
         }
 
-        .section-intro {
+        .section-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
 
-        .intro-badge {
+        .section-badge {
             display: inline-block;
             padding: 8px 20px;
             background: rgba(22, 163, 74, 0.1);
@@ -46,318 +46,265 @@
             border-radius: 100px;
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
 
         .section-title {
-            font-size: 42px;
+            font-size: 36px;
             font-weight: 800;
             color: var(--dark);
             margin-bottom: 20px;
         }
 
-        .section-desc {
+        .section-subtitle {
             font-size: 18px;
             color: var(--gray);
             max-width: 600px;
             margin: 0 auto;
-            line-height: 1.8;
+            line-height: 1.6;
         }
 
-        .benefits-grid {
+        .advantages-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-bottom: 80px;
+            margin-top: 40px;
         }
 
-        .benefit-card {
+        .advantage-card {
             background: var(--white);
             border-radius: 24px;
             padding: 40px 30px;
+            text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
         }
 
-        .benefit-card:hover {
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .advantage-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
         }
 
-        .benefit-icon {
-            width: 70px;
-            height: 70px;
+        .advantage-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .advantage-icon {
+            width: 80px;
+            height: 80px;
             background: rgba(22, 163, 74, 0.1);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
+            margin: 0 auto 24px;
+            transition: all 0.3s ease;
         }
 
-        .benefit-icon i {
+        .advantage-card:hover .advantage-icon {
+            background: var(--primary);
+        }
+
+        .advantage-icon i {
             font-size: 32px;
             color: var(--primary);
+            transition: all 0.3s ease;
         }
 
-        .benefit-title {
-            font-size: 24px;
+        .advantage-card:hover .advantage-icon i {
+            color: var(--white);
+        }
+
+        .advantage-title {
+            font-size: 22px;
             font-weight: 700;
             color: var(--dark);
             margin-bottom: 16px;
         }
 
-        .benefit-desc {
+        .advantage-description {
             color: var(--gray);
-            line-height: 1.7;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
-        .stats-wrapper {
-            background: var(--white);
-            border-radius: 30px;
-            padding: 60px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-        }
-
-        .stats-grid {
+        .stats-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
+            gap: 30px;
+            margin-top: 80px;
         }
 
-        .stat-item {
+        .stat-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px;
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
         }
 
         .stat-number {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 800;
             color: var(--primary);
-            margin-bottom: 12px;
-            line-height: 1;
+            margin-bottom: 8px;
         }
 
         .stat-label {
             color: var(--gray);
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 500;
         }
 
-        .testimonial-section {
-            padding: 100px 0;
-            background: var(--white);
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .testimonial-card {
-            background: var(--light);
-            border-radius: 24px;
-            padding: 40px;
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: scale(1.02);
-        }
-
-        .testimonial-content {
-            font-size: 18px;
-            color: var(--dark);
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-
-        .author-image {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 20px;
-        }
-
-        .author-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .author-info h4 {
-            font-size: 18px;
-            color: var(--dark);
-            margin-bottom: 4px;
-        }
-
-        .author-info p {
-            color: var(--gray);
-            font-size: 14px;
-        }
-
         @media (max-width: 1024px) {
-            .benefits-grid {
+            .advantages-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .stats-grid {
+            .stats-container {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
             }
         }
 
         @media (max-width: 768px) {
             .section-title {
-                font-size: 32px;
+                font-size: 28px;
             }
 
-            .testimonial-grid {
+            .advantages-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .stat-card {
+                padding: 20px;
             }
         }
 
-        @media (max-width: 640px) {
-            .benefits-grid {
-                grid-template-columns: 1fr;
+        @media (max-width: 480px) {
+            .advantages-section {
+                padding: 60px 0;
             }
 
-            .stats-wrapper {
-                padding: 40px 20px;
-            }
-
-            .stats-grid {
+            .stats-container {
                 grid-template-columns: 1fr;
-                gap: 40px;
             }
         }
     </style>
 </head>
 <body>
-    <section class="feature-section">
+    <section class="advantages-section">
         <div class="container">
-            <div class="section-intro" data-aos="fade-up">
-                <span class="intro-badge">Kenapa TaniKita</span>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Kenapa TaniKita?</span>
                 <h2 class="section-title">Solusi Terbaik untuk Pertanian Modern</h2>
-                <p class="section-desc">
+                <p class="section-subtitle">
                     Kami menghadirkan inovasi teknologi untuk membantu petani Indonesia 
                     meningkatkan produktivitas dan kesejahteraan mereka
                 </p>
             </div>
 
-            <div class="benefits-grid">
-                <!-- Benefit 1 -->
-                <div class="benefit-card" data-aos="fade-up">
-                    <div class="benefit-icon">
+            <div class="advantages-grid">
+                <!-- Keunggulan 1 -->
+                <div class="advantage-card" data-aos="fade-up">
+                    <div class="advantage-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3 class="benefit-title">Teknologi Terdepan</h3>
-                    <p class="benefit-desc">
-                        Platform digital yang mudah digunakan dengan teknologi IoT dan AI 
-                        untuk monitoring dan optimasi hasil pertanian
+                    <h3 class="advantage-title">Teknologi Modern</h3>
+                    <p class="advantage-description">
+                        Platform yang mudah digunakan dengan teknologi IoT dan AI untuk 
+                        monitoring dan optimasi pertanian
                     </p>
                 </div>
 
-                <!-- Benefit 2 -->
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="benefit-icon">
+                <!-- Keunggulan 2 -->
+                <div class="advantage-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="advantage-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="benefit-title">Pendampingan Ahli</h3>
-                    <p class="benefit-desc">
-                        Tim ahli pertanian yang siap memberikan konsultasi dan 
-                        panduan untuk meningkatkan hasil panen
+                    <h3 class="advantage-title">Tim Ahli</h3>
+                    <p class="advantage-description">
+                        Didukung oleh tim ahli pertanian dan teknologi yang berpengalaman
                     </p>
                 </div>
 
-                <!-- Benefit 3 -->
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="benefit-icon">
+                <!-- Keunggulan 3 -->
+                <div class="advantage-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="advantage-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3 class="benefit-title">Akses Pasar</h3>
-                    <p class="benefit-desc">
-                        Hubungkan langsung dengan pembeli potensial dan dapatkan 
-                        harga terbaik untuk hasil panen
+                    <h3 class="advantage-title">Peningkatan Hasil</h3>
+                    <p class="advantage-description">
+                        Terbukti meningkatkan produktivitas dan efisiensi pertanian
+                    </p>
+                </div>
+
+                <!-- Keunggulan 4 -->
+                <div class="advantage-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="advantage-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="advantage-title">Kemitraan Luas</h3>
+                    <p class="advantage-description">
+                        Jaringan kemitraan yang luas dengan berbagai stakeholder pertanian
+                    </p>
+                </div>
+
+                <!-- Keunggulan 5 -->
+                <div class="advantage-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="advantage-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="advantage-title">Berkelanjutan</h3>
+                    <p class="advantage-description">
+                        Mendukung praktik pertanian yang ramah lingkungan dan berkelanjutan
+                    </p>
+                </div>
+
+                <!-- Keunggulan 6 -->
+                <div class="advantage-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="advantage-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="advantage-title">Edukasi</h3>
+                    <p class="advantage-description">
+                        Akses ke pelatihan dan materi edukasi pertanian modern
                     </p>
                 </div>
             </div>
 
-            <div class="stats-wrapper" data-aos="fade-up">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">10K+</div>
-                        <div class="stat-label">Petani Bergabung</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">30%</div>
-                        <div class="stat-label">Peningkatan Hasil</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">20+</div>
-                        <div class="stat-label">Kota di Indonesia</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Mitra Strategis</div>
-                    </div>
+            <div class="stats-container">
+                <div class="stat-card" data-aos="fade-up">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Petani Terdaftar</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonial-section">
-        <div class="container">
-            <div class="section-intro" data-aos="fade-up">
-                <span class="intro-badge">Testimoni</span>
-                <h2 class="section-title">Apa Kata Mereka?</h2>
-                <p class="section-desc">
-                    Dengarkan langsung dari para petani yang telah menggunakan platform TaniKita
-                </p>
-            </div>
-
-            <div class="testimonial-grid">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card" data-aos="fade-up">
-                    <p class="testimonial-content">
-                        "TaniKita membantu saya meningkatkan hasil panen hingga 40% 
-                        melalui panduan dan teknologi yang mudah digunakan. Sekarang 
-                        saya bisa lebih fokus pada kualitas hasil pertanian."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="path/to/farmer1.jpg" alt="Pak Sujono">
-                        </div>
-                        <div class="author-info">
-                            <h4>Pak Sujono</h4>
-                            <p>Petani Sayur, Malang</p>
-                        </div>
-                    </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-number">30%</div>
+                    <div class="stat-label">Peningkatan Hasil</div>
                 </div>
-
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                    <p class="testimonial-content">
-                        "Berkat TaniKita, saya bisa langsung terhubung dengan pembeli 
-                        dan mendapatkan harga yang lebih baik. Aplikasinya sangat 
-                        membantu dalam mengelola lahan pertanian."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="path/to/farmer2.jpg" alt="Bu Aminah">
-                        </div>
-                        <div class="author-info">
-                            <h4>Bu Aminah</h4>
-                            <p>Petani Padi, Cianjur</p>
-                        </div>
-                    </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Kota di Indonesia</div>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Mitra Strategis</div>
                 </div>
             </div>
         </div>
