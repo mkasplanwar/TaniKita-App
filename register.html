@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1000px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-box {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-box h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #37474F;
+        }
+
+        .form-box form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-box label {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #455A64;
+        }
+
+        .form-box input {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-box button {
+            background-color: #72bf78;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-box button:hover {
+            background-color: #72bf78;
+        }
+
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .social-login button {
+            background: none;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-login button img {
+            margin-right: 10px;
+            height: 20px;
+        }
+
+        .image-box {
+            flex: 1;
+            background: #ECEFF1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #37474F;
+            padding: 20px;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-box h2 {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column-reverse;
+            }
+
+            .image-box, .form-box {
+                flex: unset;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>Sign up to TaniKita</h2>
+            <form action="#">
+                <label for="fullname">Full name</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <button type="submit">Create account</button>
+            </form>
+            <div class="social-login">
+                <button>
+                    <img src="src/imgs/google.png" alt="Google Icon"> Sign up with Google
+                </button>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="src/illustration/ilustrasi8.jpg" alt="Community Image">
+            <h2>Welcome to the TaniKita Community!</h2>
+        </div>
+    </div>
+</body>
+</html>
