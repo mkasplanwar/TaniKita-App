@@ -151,69 +151,6 @@
             line-height: 1.8;
         }
 
-        /* Vision Mission Section */
-        .vision-mission {
-            padding: 100px 0;
-            background: var(--white);
-        }
-
-        .vm-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-
-        .vm-card {
-            background: var(--light);
-            padding: 40px;
-            border-radius: 24px;
-            transition: all 0.3s ease;
-        }
-
-        .vm-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-        }
-
-        .vm-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--primary);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .vm-icon i {
-            font-size: 28px;
-            color: var(--white);
-        }
-
-        .vm-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--dark);
-        }
-
-        .vm-list {
-            list-style: none;
-        }
-
-        .vm-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 16px;
-            color: var(--gray);
-        }
-
-        .vm-item i {
-            color: var(--primary);
-            margin-right: 12px;
-            margin-top: 6px;
-        }
 
         @media (max-width: 968px) {
             .about-grid,
@@ -247,15 +184,6 @@
             .hero-subtitle {
                 font-size: 16px;
             }
-
-            .section-tag,
-            .about-tag {
-                font-size: 12px;
-            }
-
-            .vm-card {
-                padding: 30px;
-            }
         }
     </style>
 </head>
@@ -279,7 +207,7 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-content" data-aos="fade-right">
-                    <span class="about-tag">Sekilas TaniKita</span>
+                    <!-- <span class="about-tag">Sekilas TaniKita</span> -->
                     <h2 class="about-title">Transformasi Digital untuk Pertanian Indonesia</h2>
                     <p class="about-text">
                         TaniKita adalah platform teknologi pertanian yang berdedikasi untuk 
@@ -296,61 +224,6 @@
                 </div>
                 <div class="about-image" data-aos="fade-left">
                     <img src="src/imgs/tani.jpg" alt="TaniKita Platform">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Vision Mission Section -->
-    <section class="vision-mission">
-        <div class="container">
-            <div class="vm-grid">
-                <!-- Vision Card -->
-                <div class="vm-card" data-aos="fade-up">
-                    <div class="vm-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3 class="vm-title">Visi Kami</h3>
-                    <ul class="vm-list">
-                        <li class="vm-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Menjadi platform teknologi pertanian terdepan di Indonesia</span>
-                        </li>
-                        <li class="vm-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Menciptakan ekosistem pertanian yang modern dan berkelanjutan</span>
-                        </li>
-                        <li class="vm-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Meningkatkan kesejahteraan petani melalui inovasi digital</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Mission Card -->
-                <div class="vm-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="vm-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3 class="vm-title">Misi Kami</h3>
-                    <ul class="vm-list">
-                        <li class="vm-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Menghadirkan solusi teknologi yang mudah diakses petani</span>
-                        </li>
-                        <li class="vm-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Meningkatkan produktivitas dan efisiensi pertanian</span>
-                        </li>
-                        <li class="vm-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Membangun jaringan distribusi yang adil dan transparan</span>
-                        </li>
-                        <li class="vm-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Mendorong adopsi praktik pertanian berkelanjutan</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
