@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meet Our Founders | TaniKita</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="src/css/tentang.css">
     <link rel="stylesheet" href="src/css/about.css">
-
+    <link rel="stylesheet" href="src/css/mission.css">
     <!-- Basic Favicon -->
     <link rel="icon" type="image/x-icon" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
         
@@ -188,6 +189,90 @@
             </div>
         </div>
     </section>
+    <section class="mission-banner">
+        <div class="mission-bg"></div>
+        <div class="wrapper-mission">
+            <div class="banner-mission" data-aos="fade-up">
+                <span class="badge-mission">Visi & Misi</span>
+                <h1 class="main-title-mission">Membangun Masa Depan Pertanian Indonesia</h1>
+                <p class="subtitle-mission">
+                    Bersama menciptakan ekosistem pertanian modern yang berkelanjutan
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="wrapper-mission">
+        <div class="vision-mission-grid">
+            <!-- Visi Card -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h2 class="card-title">Visi Kami</h2>
+                </div>
+                <p style="color: var(--gray); line-height: 1.8;">
+                    Menjadi pionir transformasi digital pertanian Indonesia dengan menciptakan 
+                    ekosistem pertanian yang efisien, modern, dan berkelanjutan. Kami berkomitmen 
+                    untuk memberdayakan petani Indonesia melalui teknologi inovatif dan menciptakan 
+                    dampak positif bagi industri pertanian nasional.
+                </p>
+            </div>
+
+            <!-- Misi Card -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h2 class="card-title">Misi Kami</h2>
+                </div>
+                <ul class="mission-list">
+                    <li class="mission-item">
+                        <div class="bullet-point">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="mission-content">
+                            <h3>Digitalisasi Pertanian</h3>
+                            <p>Mengembangkan dan mengimplementasikan solusi teknologi yang mudah diakses 
+                               untuk modernisasi sektor pertanian</p>
+                        </div>
+                    </li>
+                    <li class="mission-item">
+                        <div class="bullet-point">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="mission-content">
+                            <h3>Pemberdayaan Petani</h3>
+                            <p>Meningkatkan kesejahteraan petani melalui akses teknologi, 
+                               pengetahuan, dan pasar yang lebih luas</p>
+                        </div>
+                    </li>
+                    <li class="mission-item">
+                        <div class="bullet-point">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="mission-content">
+                            <h3>Pertanian Berkelanjutan</h3>
+                            <p>Mendorong praktik pertanian yang ramah lingkungan dan berkelanjutan 
+                               untuk generasi mendatang</p>
+                        </div>
+                    </li>
+                    <li class="mission-item">
+                        <div class="bullet-point">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="mission-content">
+                            <h3>Kolaborasi Ekosistem</h3>
+                            <p>Membangun kerjasama yang kuat dengan berbagai pemangku kepentingan 
+                               dalam ekosistem pertanian</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <!-- Footer -->
 <footer class="footer">
     <div class="footer-top">
@@ -318,6 +403,12 @@
         // Parallax effect for hero pattern
         window.addEventListener('scroll', function() {
             const pattern = document.querySelector('.hero-pattern');
+            const scrolled = window.pageYOffset;
+            pattern.style.transform = `translateY(${scrolled * 0.4}px)`;
+        });
+        // Efek parallax untuk pattern background
+        window.addEventListener('scroll', function() {
+            const pattern = document.querySelector('.pattern-bg');
             const scrolled = window.pageYOffset;
             pattern.style.transform = `translateY(${scrolled * 0.4}px)`;
         });
