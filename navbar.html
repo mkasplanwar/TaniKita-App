@@ -3,43 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaniKita - Platform Penghubung Petani dan Konsumen</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Meet Our Founders | TaniKita</title>
     <link rel="stylesheet" href="src/css/navbar.css">
-
-        <!-- Basic Favicon -->
-        <link rel="icon" type="image/x-icon" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
-        
-        <!-- Multiple sizes -->
-        <link rel="icon" type="image/png" sizes="16x16" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
-        <link rel="icon" type="image/png" sizes="32x32" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
-        <link rel="icon" type="image/png" sizes="48x48" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
-        
-        <!-- Apple Touch Icon -->
-        <link rel="apple-touch-icon" sizes="180x180" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0; border-radius: 0;">
-        
-        <!-- Android Chrome -->
-        <link rel="icon" type="image/png" sizes="192x192" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
-        <link rel="icon" type="image/png" sizes="512x512" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
-</head>
+</head>style
 <body>
-<!-- Navbar -->
-<nav class="navbar">
-    <div class="container nav-container">
-        <div class="nav-logo">
-            <a href="/">
-                <img src="src/imgs/tanikita.png" alt="TaniKita Logo" class="logo-image">
-            </a>
-        </div>
-        
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-logo">
+                <a href="/">
+                    <img src="src/imgs/tanikita.png" alt="TaniKita Logo" class="logo-image">
+                </a>
+            </div>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
 
-        <!-- Desktop Menu -->
-        <div class="desktop-menu">
+            <!-- Desktop Menu -->
+            <div class="desktop-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link active">Beranda</a></li>
+                    <li><a href="#produk" class="nav-link">Marketplace</a></li>
+                    <li><a href="tentang.html" class="nav-link">Tentang Kami</a></li>
+                    <li><a href="#kontak" class="nav-link">Kontak</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="#masuk" class="btn-login">Masuk</a>
+                    <a href="#daftar" class="btn-register">Daftar</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Off-canvas Menu (di luar navbar) -->
+    <div class="off-canvas-menu" id="offCanvasMenu">
+        <div class="off-canvas-header">
+            <div class="nav-logo">
+                <img src="src/imgs/tanikita.png" alt="TaniKita Logo" class="logo-image">
+            </div>
+            <button class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="off-canvas-content">
             <ul class="nav-links">
                 <li><a href="index.html" class="nav-link active">Beranda</a></li>
                 <li><a href="#produk" class="nav-link">Marketplace</a></li>
@@ -52,42 +59,9 @@
             </div>
         </div>
     </div>
-</nav>
 
-<!-- Off-canvas Menu (di luar navbar) -->
-<div class="off-canvas-menu" id="offCanvasMenu">
-    <div class="off-canvas-header">
-        <div class="nav-logo">
-            <img src="src/imgs/tanikita.png" alt="TaniKita Logo" class="logo-image">
-        </div>
-        <button class="close-menu" id="closeMenu">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-    <div class="off-canvas-content">
-        <ul class="nav-links">
-            <li><a href="index.html" class="nav-link active">Beranda</a></li>
-            <li><a href="#produk" class="nav-link">Marketplace</a></li>
-            <li><a href="tentang.html" class="nav-link">Tentang Kami</a></li>
-            <li><a href="#kontak" class="nav-link">Kontak</a></li>
-        </ul>
-        <div class="nav-buttons">
-            <a href="#masuk" class="btn-login">Masuk</a>
-            <a href="#daftar" class="btn-register">Daftar</a>
-        </div>
-    </div>
-</div>
-
-<!-- Overlay (di luar navbar) -->
-<div class="overlay" id="overlay"></div>
-
-<script src="src/js/navbar.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init({
-        duration: 800,
-        once: true
-    });
-</script>
+    <!-- Overlay (di luar navbar) -->
+    <div class="overlay" id="overlay"></div>
+    <script src="src/js/navbar.js"></script>
 </body>
 </html>
