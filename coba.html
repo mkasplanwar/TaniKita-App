@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | TaniKita</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #16A34A;
+            --primary-dark: #15803D;
+            --secondary: #E2E8F0;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            overflow: hidden;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(30deg, var(--white) 12%, transparent 12.5%, transparent 87%, var(--white) 87.5%, var(--white)),
+                linear-gradient(150deg, var(--white) 12%, transparent 12.5%, transparent 87%, var(--white) 87.5%, var(--white)),
+                linear-gradient(30deg, var(--white) 12%, transparent 12.5%, transparent 87%, var(--white) 87.5%, var(--white)),
+                linear-gradient(150deg, var(--white) 12%, transparent 12.5%, transparent 87%, var(--white) 87.5%, var(--white)),
+                linear-gradient(60deg, rgba(255,255,255,0.1) 25%, transparent 25.5%, transparent 75%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0.1)),
+                linear-gradient(60deg, rgba(255,255,255,0.1) 25%, transparent 25.5%, transparent 75%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0.1));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content {
+            padding-right: 40px;
+        }
+
+        .about-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--primary);
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .about-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--dark);
+        }
+
+        .about-text {
+            color: var(--gray);
+            margin-bottom: 32px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Vision Mission Section */
+        .vision-mission {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .vm-card {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .vm-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .vm-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .vm-icon i {
+            font-size: 28px;
+            color: var(--white);
+        }
+
+        .vm-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .vm-list {
+            list-style: none;
+        }
+
+        .vm-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            color: var(--gray);
+        }
+
+        .vm-item i {
+            color: var(--primary);
+            margin-right: 12px;
+            margin-top: 6px;
+        }
+
+        @media (max-width: 968px) {
+            .about-grid,
+            .vm-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-content {
+                padding-right: 0;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .about-title {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 80px 0;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .section-tag,
+            .about-tag {
+                font-size: 12px;
+            }
+
+            .vm-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <span class="section-tag">About Us</span>
+                <h1 class="hero-title">Membangun Masa Depan Pertanian Indonesia</h1>
+                <p class="hero-subtitle">
+                    Menghubungkan petani dengan teknologi modern untuk pertanian yang lebih baik
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content" data-aos="fade-right">
+                    <span class="about-tag">Sekilas TaniKita</span>
+                    <h2 class="about-title">Transformasi Digital untuk Pertanian Indonesia</h2>
+                    <p class="about-text">
+                        TaniKita adalah platform teknologi pertanian yang berdedikasi untuk 
+                        memberdayakan petani Indonesia. Didirikan pada tahun 2023, kami 
+                        menggabungkan teknologi modern dengan pemahaman mendalam tentang 
+                        kebutuhan petani lokal.
+                    </p>
+                    <p class="about-text">
+                        Platform kami menyediakan solusi end-to-end untuk petani, mulai dari 
+                        perencanaan tanam, monitoring lahan, hingga akses pasar. Dengan teknologi 
+                        IoT dan AI, kami membantu petani meningkatkan produktivitas dan 
+                        pendapatan mereka.
+                    </p>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <img src="src/imgs/tani.jpg" alt="TaniKita Platform">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Mission Section -->
+    <section class="vision-mission">
+        <div class="container">
+            <div class="vm-grid">
+                <!-- Vision Card -->
+                <div class="vm-card" data-aos="fade-up">
+                    <div class="vm-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="vm-title">Visi Kami</h3>
+                    <ul class="vm-list">
+                        <li class="vm-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Menjadi platform teknologi pertanian terdepan di Indonesia</span>
+                        </li>
+                        <li class="vm-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Menciptakan ekosistem pertanian yang modern dan berkelanjutan</span>
+                        </li>
+                        <li class="vm-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Meningkatkan kesejahteraan petani melalui inovasi digital</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Mission Card -->
+                <div class="vm-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="vm-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="vm-title">Misi Kami</h3>
+                    <ul class="vm-list">
+                        <li class="vm-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Menghadirkan solusi teknologi yang mudah diakses petani</span>
+                        </li>
+                        <li class="vm-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Meningkatkan produktivitas dan efisiensi pertanian</span>
+                        </li>
+                        <li class="vm-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Membangun jaringan distribusi yang adil dan transparan</span>
+                        </li>
+                        <li class="vm-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Mendorong adopsi praktik pertanian berkelanjutan</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Parallax effect for hero pattern
+        window.addEventListener('scroll', function() {
+            const pattern = document.querySelector('.hero-pattern');
+            const scrolled = window.pageYOffset;
+            pattern.style.transform = `translateY(${scrolled * 0.4}px)`;
+        });
+    </script>
+</body>
+</html>
