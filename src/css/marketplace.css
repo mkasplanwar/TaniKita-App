@@ -1,0 +1,436 @@
+:root {
+    --primary: #16A34A;
+    --secondary: #15803D;
+    --background: #F9FAFB;
+    --text: #1F2937;
+    --gray: #6B7280;
+    --light: #E5E7EB;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: var(--background);
+}
+        /* Z-index layers */
+        :root {
+            /* ... variabel warna yang ada ... */
+            
+            /* Tambahkan variabel z-index */
+            --z-navbar: 1000;
+            --z-overlay: 1100;
+            --z-offcanvas: 1200;
+            }
+            
+            /* Navbar */
+            .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #72bf78;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: var(--z-navbar);
+            height: 80px;
+            }
+            .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            padding: 0 2rem;
+            }
+            
+            /* Logo Styles */
+            .nav-logo {
+            display: flex;
+            align-items: center;
+            }
+            
+            .nav-logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            }
+            
+            .logo-image {
+            height: 40px; /* Sesuaikan dengan kebutuhan */
+            width: auto;
+            object-fit: contain;
+            }
+            
+            /* Untuk off-canvas menu */
+            .off-canvas-header .logo-image {
+            height: 35px; /* Sedikit lebih kecil di menu mobile */
+            }
+            
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+            .logo-image {
+            height: 35px; /* Ukuran logo lebih kecil di mobile */
+            }
+            }
+            
+            .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            }
+            
+            .logo-highlight {
+            color: var(--primary-color);
+            }
+            
+            /* Desktop Menu */
+            .desktop-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            }
+            
+            .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            }
+            
+            .nav-link {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            }
+            
+            /*.nav-link:hover,
+            .nav-link.active {
+            color: var(--primary-color);
+            background-color: #ffffff;
+            border-radius: 50px;
+            
+            }*/
+            
+            .nav-buttons {
+            display: flex;
+            gap: 10px;
+            }
+            
+            .btn-login {
+            text-decoration: none;
+            background-color: #ffffff;
+            color: #72bf78;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            }
+            
+            .btn-login:hover {
+                transform: translateY(-5px);
+            }
+            
+            .btn-register {
+            text-decoration: none;
+            color: #72bf78;
+            background: #ffffff;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            }
+            
+            .btn-register:hover {
+            
+            transform: translateY(-5px);
+            }
+            
+            /* Off-canvas Menu */
+            .off-canvas-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: #72bf78;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+            z-index: var(--z-offcanvas); /* Z-index tertinggi */
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            }
+            
+            .off-canvas-menu.active {
+            transform: translateX(-300px);
+            }
+            
+            .off-canvas-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            }
+            
+            .close-menu {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            }
+            
+            .off-canvas-content .nav-links {
+            flex-direction: column;
+            margin-bottom: 2rem;
+            }
+            
+            .off-canvas-content .nav-buttons {
+            flex-direction: column;
+            }
+            
+            .off-canvas-content .btn-login,
+            .off-canvas-content .btn-register {
+            text-align: center;
+            }
+            
+            /* Overlay */
+            .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: var(--z-overlay);
+            pointer-events: auto; /* Pastikan overlay bisa menerima klik */
+            }
+            
+            .overlay.active {
+            opacity: 1;
+            visibility: visible;
+            }
+            /* Toggle Button */
+            .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            }
+            
+            /* Responsive Styles */
+            @media (max-width: 768px) {
+            .desktop-menu {
+            display: none;
+            }
+            
+            .nav-toggle {
+            display: block;
+            z-index: var(--z-navbar);
+            }
+            
+            .off-canvas-menu {
+            padding-top: 1rem;
+            }
+            
+            .off-canvas-header {
+            margin-bottom: 1.5rem;
+            }
+            
+            .off-canvas-content {
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+            }
+            }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+
+/* Navbar */
+.navbar-search {
+    background: var(--white);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position:relative;
+    top: 80px;
+    z-index: 100;
+}
+
+/* Search Section */
+.search-section {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 45px;
+    border: 2px solid var(--light);
+    border-radius: 50px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+}
+
+/* Filters */
+.filter-section {
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid var(--light);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.product-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-category {
+    color: var(--primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.product-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.product-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--gray);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.product-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.buy-btn:hover {
+    background: var(--secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .filter-group {
+        min-width: 100%;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
