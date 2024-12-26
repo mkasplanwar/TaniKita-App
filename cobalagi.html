@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaniKita Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #16A34A;
+            --secondary: #15803D;
+            --background: #F9FAFB;
+            --text: #1F2937;
+            --gray: #6B7280;
+            --light: #E5E7EB;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* Search Section */
+        .search-section {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 45px;
+            border: 2px solid var(--light);
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        /* Filters */
+        .filter-section {
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-select {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid var(--light);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .buy-btn:hover {
+            background: var(--secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .filter-group {
+                min-width: 100%;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="search-section">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" class="search-input" 
+                       placeholder="Cari produk pertanian...">
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="filter-section">
+            <div class="filter-group">
+                <select id="locationFilter" class="filter-select">
+                    <option value="">Semua Lokasi</option>
+                    <option value="jakarta">Jakarta</option>
+                    <option value="bandung">Bandung</option>
+                    <option value="surabaya">Surabaya</option>
+                    <option value="yogyakarta">Yogyakarta</option>
+                    <option value="medan">Medan</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">Semua Kategori</option>
+                    <option value="sayuran">Sayuran</option>
+                    <option value="buah">Buah-buahan</option>
+                    <option value="beras">Beras</option>
+                    <option value="rempah">Rempah-rempah</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select id="sortFilter" class="filter-select">
+                    <option value="">Urutkan</option>
+                    <option value="price-low">Harga: Rendah ke Tinggi</option>
+                    <option value="price-high">Harga: Tinggi ke Rendah</option>
+                    <option value="newest">Terbaru</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="productGrid" class="product-grid">
+            <!-- Products will be dynamically inserted here -->
+        </section>
+    </main>
+
+    <script>
+        // Sample product data
+        const products = [
+            {
+                id: 1,
+                name: "Tomat Segar Premium",
+                category: "Sayuran",
+                price: 15000,
+                location: "Bandung",
+                image: "src/illustration/tomat.jpg",
+                stock: 100,
+                sold: "50 ton"
+            },
+            {
+                id: 2,
+                name: "Bayam Pengandaran",
+                category: "Buah",
+                price: 25000,
+                location: "Surabaya",
+                image: "src/illustration/bayam.jpg",
+                stock: 75,
+                sold: ""
+            },
+            {
+                id: 3,
+                name: "Jeruk Mandarin",
+                category: "Buah",
+                price: 25000,
+                location: "Surabaya",
+                image: "src/illustration/beras.jpg",
+                stock: 75,
+                sold: 30
+            }
+        ];
+
+        // DOM Elements
+        const searchInput = document.getElementById('searchInput');
+        const locationFilter = document.getElementById('locationFilter');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        const productGrid = document.getElementById('productGrid');
+
+        // Filter and render products
+        function filterProducts() {
+            let filteredProducts = [...products];
+
+            // Apply search filter
+            const searchTerm = searchInput.value.toLowerCase();
+            if (searchTerm) {
+                filteredProducts = filteredProducts.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.category.toLowerCase().includes(searchTerm)
+                );
+            }
+
+            // Apply location filter
+            const location = locationFilter.value;
+            if (location) {
+                filteredProducts = filteredProducts.filter(product => 
+                    product.location.toLowerCase() === location.toLowerCase()
+                );
+            }
+
+            // Apply category filter
+            const category = categoryFilter.value;
+            if (category) {
+                filteredProducts = filteredProducts.filter(product => 
+                    product.category.toLowerCase() === category.toLowerCase()
+                );
+            }
+
+            // Apply sorting
+            const sortBy = sortFilter.value;
+            switch(sortBy) {
+                case 'price-low':
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'newest':
+                    filteredProducts.sort((a, b) => b.id - a.id);
+                    break;
+            }
+
+            renderProducts(filteredProducts);
+        }
+
+        // Render products to grid
+        function renderProducts(productsToShow) {
+            productGrid.innerHTML = productsToShow.map(product => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-price">
+                            Rp ${product.price.toLocaleString('id-ID')}/kg
+                        </div>
+                        <div class="product-meta">
+                            <div class="product-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                ${product.location}
+                            </div>
+                            <div>Terjual: ${product.sold}</div>
+                        </div>
+                        <button class="buy-btn" onclick="handleBuy(${product.id})">
+                            <i class="fas fa-shopping-cart"></i>
+                            Beli Sekarang
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', filterProducts);
+        locationFilter.addEventListener('change', filterProducts);
+        categoryFilter.addEventListener('change', filterProducts);
+        sortFilter.addEventListener('change', filterProducts);
+
+        // Handle buy action
+        function handleBuy(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                alert(`Anda akan membeli ${product.name} seharga Rp ${product.price.toLocaleString('id-ID')}/kg`);
+            }
+        }
+
+        // Initialize
+        renderProducts(products);
+    </script>
+</body>
+</html>
