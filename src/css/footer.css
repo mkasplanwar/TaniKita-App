@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+ /* Footer Styles */
+ .footer {
+    background: #1a1f2c;
+    color: #ffffff;
+    padding-top: 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Footer Top Section */
+.footer-top {
+    position: relative;
+    padding-bottom: 3rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 4rem;
+}
+
+/* Brand Section */
+.footer-brand {
+    max-width: 350px;
+}
+
+.footer-logo {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+}
+
+.footer-logo .logo-text {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.footer-logo .logo-highlight {
+    color: var(--primary-color);
+}
+
+.brand-description {
+    color: #9ca3af;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Footer Links */
+.footer-title {
+    color: #ffffff;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-list a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.footer-list a:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+/* Contact Info */
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: #9ca3af;
+}
+
+.contact-list i {
+    color: var(--primary-color);
+    margin-top: 0.25rem;
+}
+
+/* Download Apps Section */
+.download-apps {
+    margin-top: 2rem;
+}
+.download-title {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.download-apps h4 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.app-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.app-button img {
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.app-button:hover img {
+    transform: translateY(-3px);
+}
+.store-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.store-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    min-width: 160px;
+}
+.store-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.button-content i {
+    font-size: 1.75rem;
+    color: #ffffff;
+}
+
+.button-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-subtitle {
+    font-size: 0.7rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.button-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+/* Hover Effects */
+.store-button.play-store:hover {
+    background: linear-gradient(135deg, #00c6fb 0%, #005bea 100%);
+    border-color: transparent;
+}
+
+.store-button.app-store:hover {
+    background: linear-gradient(135deg, #5851DB 0%, #833AB4 100%);
+    border-color: transparent;
+}
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 0;
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    color: #9ca3af;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-legal a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding-top: 3rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .footer-legal {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-legal {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .store-buttons {
+        flex-direction: column;
+    }
+
+    .store-button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .button-content {
+        justify-content: center;
+    }
+}
+/* Active State */
+.store-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+/* Update HANYA untuk Footer Logo Styles */
+.footer-logo {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo-img {
+    height: 45px; /* Sesuaikan dengan ukuran logo Anda */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-logo {
+        display: flex;
+        justify-content: center; /* Center logo di mobile */
+    }
+    
+    .footer-logo-img {
+        height: 40px; /* Sedikit lebih kecil di mobile */
+    }
+}
