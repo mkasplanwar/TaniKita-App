@@ -3,25 +3,313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meet Our Founders | TaniKita</title>
-    <link rel="stylesheet" href="src/css/navbar.css">
-</head>style
-<body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="nav-logo">
-                <a href="/">
-                    <img src="src/imgs/tanikita.png" alt="TaniKita Logo" class="logo-image">
-                </a>
-            </div>
-            
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
+    <title>TaniKita - Platform Penghubung Petani dan Konsumen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-            <!-- Desktop Menu -->
-            <div class="desktop-menu">
+        <!-- Basic Favicon -->
+        <link rel="icon" type="image/x-icon" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
+        
+        <!-- Multiple sizes -->
+        <link rel="icon" type="image/png" sizes="16x16" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
+        <link rel="icon" type="image/png" sizes="32x32" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
+        <link rel="icon" type="image/png" sizes="48x48" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
+        
+        <!-- Apple Touch Icon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0; border-radius: 0;">
+        
+        <!-- Android Chrome -->
+        <link rel="icon" type="image/png" sizes="192x192" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
+        <link rel="icon" type="image/png" sizes="512x512" href="src/imgs/favicon.png" style="display: none; margin: 0; padding: 0;">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Z-index layers */
+        :root {
+        /* ... variabel warna yang ada ... */
+        
+        /* Tambahkan variabel z-index */
+        --z-navbar: 1000;
+        --z-overlay: 1100;
+        --z-offcanvas: 1200;
+        }
+        
+        /* Navbar */
+        .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #72bf78;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: var(--z-navbar);
+        height: 80px;
+        }
+        .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        padding: 0 2rem;
+        }
+        
+        /* Logo Styles */
+        .nav-logo {
+        display: flex;
+        align-items: center;
+        }
+        
+        .nav-logo a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        }
+        
+        .logo-image {
+        height: 40px; /* Sesuaikan dengan kebutuhan */
+        width: auto;
+        object-fit: contain;
+        }
+        
+        /* Untuk off-canvas menu */
+        .off-canvas-header .logo-image {
+        height: 35px; /* Sedikit lebih kecil di menu mobile */
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+        .logo-image {
+        height: 35px; /* Ukuran logo lebih kecil di mobile */
+        }
+        }
+        
+        .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        }
+        
+        .logo-highlight {
+        color: var(--primary-color);
+        }
+        
+        /* Desktop Menu */
+        .desktop-menu {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        }
+        
+        .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        }
+        
+        .nav-link {
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        }
+        
+        /*.nav-link:hover,
+        .nav-link.active {
+        color: var(--primary-color);
+        background-color: #ffffff;
+        border-radius: 50px;
+        
+        }*/
+        
+        .nav-buttons {
+        display: flex;
+        gap: 10px;
+        }
+        
+        .btn-login {
+        text-decoration: none;
+        background-color: #ffffff;
+        color: #72bf78;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-register {
+        text-decoration: none;
+        color: #72bf78;
+        background: #ffffff;
+        font-weight: 600;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        }
+        
+        .btn-register:hover {
+        
+        transform: translateY(-5px);
+        }
+        
+        /* Off-canvas Menu */
+        .off-canvas-menu {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background: #72bf78;
+        padding: 2rem;
+        transition: transform 0.3s ease;
+        z-index: var(--z-offcanvas); /* Z-index tertinggi */
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+        }
+        
+        .off-canvas-menu.active {
+        transform: translateX(-300px);
+        }
+        
+        .off-canvas-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        }
+        
+        .close-menu {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: white;
+        cursor: pointer;
+        padding: 0.5rem;
+        }
+        
+        .off-canvas-content .nav-links {
+        flex-direction: column;
+        margin-bottom: 2rem;
+        }
+        
+        .off-canvas-content .nav-buttons {
+        flex-direction: column;
+        }
+        
+        .off-canvas-content .btn-login,
+        .off-canvas-content .btn-register {
+        text-align: center;
+        }
+        
+        /* Overlay */
+        .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: var(--z-overlay);
+        pointer-events: auto; /* Pastikan overlay bisa menerima klik */
+        }
+        
+        .overlay.active {
+        opacity: 1;
+        visibility: visible;
+        }
+        /* Toggle Button */
+        .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: white;
+        cursor: pointer;
+        padding: 0.5rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+        .desktop-menu {
+        display: none;
+        }
+        
+        .nav-toggle {
+        display: block;
+        z-index: var(--z-navbar);
+        }
+        
+        .off-canvas-menu {
+        padding-top: 1rem;
+        }
+        
+        .off-canvas-header {
+        margin-bottom: 1.5rem;
+        }
+        
+        .off-canvas-content {
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+        }
+        }
+    </style>
+</head>
+<body>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="container nav-container">
+                <div class="nav-logo">
+                    <a href="/">
+                        <img src="src/imgs/tanikita.png" alt="TaniKita Logo" class="logo-image">
+                    </a>
+                </div>
+                
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+    
+                <!-- Desktop Menu -->
+                <div class="desktop-menu">
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="nav-link active">Beranda</a></li>
+                        <li><a href="#produk" class="nav-link">Marketplace</a></li>
+                        <li><a href="tentang.html" class="nav-link">Tentang Kami</a></li>
+                        <li><a href="#kontak" class="nav-link">Kontak</a></li>
+                    </ul>
+                    <div class="nav-buttons">
+                        <a href="#masuk" class="btn-login">Masuk</a>
+                        <a href="#daftar" class="btn-register">Daftar</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Off-canvas Menu (di luar navbar) -->
+        <div class="off-canvas-menu" id="offCanvasMenu">
+            <div class="off-canvas-header">
+                <div class="nav-logo">
+                    <img src="src/imgs/tanikita.png" alt="TaniKita Logo" class="logo-image">
+                </div>
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="off-canvas-content">
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link active">Beranda</a></li>
                     <li><a href="#produk" class="nav-link">Marketplace</a></li>
@@ -34,34 +322,98 @@
                 </div>
             </div>
         </div>
-    </nav>
+    
+        <!-- Overlay (di luar navbar) -->
+        <div class="overlay" id="overlay"></div>
 
-    <!-- Off-canvas Menu (di luar navbar) -->
-    <div class="off-canvas-menu" id="offCanvasMenu">
-        <div class="off-canvas-header">
-            <div class="nav-logo">
-                <img src="src/imgs/tanikita.png" alt="TaniKita Logo" class="logo-image">
-            </div>
-            <button class="close-menu" id="closeMenu">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="off-canvas-content">
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-link active">Beranda</a></li>
-                <li><a href="#produk" class="nav-link">Marketplace</a></li>
-                <li><a href="tentang.html" class="nav-link">Tentang Kami</a></li>
-                <li><a href="#kontak" class="nav-link">Kontak</a></li>
-            </ul>
-            <div class="nav-buttons">
-                <a href="#masuk" class="btn-login">Masuk</a>
-                <a href="#daftar" class="btn-register">Daftar</a>
-            </div>
-        </div>
-    </div>
+        <script>
+                // Get DOM elements
+const navToggle = document.getElementById('navToggle');
+const closeMenu = document.getElementById('closeMenu');
+const offCanvasMenu = document.getElementById('offCanvasMenu');
+const overlay = document.getElementById('overlay');
 
-    <!-- Overlay (di luar navbar) -->
-    <div class="overlay" id="overlay"></div>
-    <script src="src/js/navbar.js"></script>
-</body>
-</html>
+// Toggle menu
+navToggle.addEventListener('click', () => {
+    offCanvasMenu.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+});
+
+// Close menu function
+const closeOffCanvasMenu = () => {
+    offCanvasMenu.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+};
+
+// Event listeners for closing menu
+closeMenu.addEventListener('click', closeOffCanvasMenu);
+overlay.addEventListener('click', closeOffCanvasMenu);
+
+// Close menu when clicking on a link
+const navLinks = document.querySelectorAll('.off-canvas-menu .nav-link');
+navLinks.forEach(link => {
+    link.addEventListener('click', closeOffCanvasMenu);
+});
+
+// Handle escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && offCanvasMenu.classList.contains('active')) {
+        closeOffCanvasMenu();
+    }
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const buyerFlow = document.getElementById('buyerFlow');
+    const sellerFlow = document.getElementById('sellerFlow');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            tabBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+
+            // Show corresponding flow
+            if (btn.dataset.tab === 'buyer') {
+                buyerFlow.classList.remove('hidden');
+                sellerFlow.classList.add('hidden');
+                animateSteps(buyerFlow);
+            } else {
+                sellerFlow.classList.remove('hidden');
+                buyerFlow.classList.add('hidden');
+                animateSteps(sellerFlow);
+            }
+        });
+    });
+
+    function animateSteps(flow) {
+        const steps = flow.querySelectorAll('.step-card');
+        steps.forEach((step, index) => {
+            step.style.opacity = '0';
+            setTimeout(() => {
+                step.classList.add('fade-in');
+            }, index * 100);
+        });
+    }
+
+    // Initial animation
+    animateSteps(buyerFlow);
+});
+document.addEventListener('DOMContentLoaded', function() {
+    // Add animation delays to categories
+    const categories = document.querySelectorAll('.partner-category');
+    categories.forEach((category, index) => {
+        category.style.setProperty('--animation-order', index);
+    });
+});
+AOS.init({
+    duration: 800,
+    once: true
+});
+        </script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        
+        </body>
+        </html>

@@ -21,12 +21,13 @@
     background-color: var(--light);
 } */
 
-/* Hero Section */
+/* banner Section */
 .banner {
     position: relative;
     padding: 120px 0;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     overflow: hidden;
+    margin-top: 80px;
 }
 
 .banner-pattern {
@@ -53,6 +54,7 @@
     padding: 0 20px;
     position: relative;
     z-index: 1;
+    
 }
 
 .banner-content {
@@ -89,7 +91,7 @@
 
 /* About Section */
 .about-section {
-    padding: 100px 0;
+    padding: 80px 0;
     position: relative;
 }
 
@@ -163,16 +165,16 @@
     }
 }
 
-@media (max-width: 640px) {
-    .hero {
+/* @media (max-width: 640px) {
+    .banner {
         padding: 80px 0;
     }
 
-    .hero-title {
+    .banner-title {
         font-size: 28px;
     }
 
-    .hero-subtitle {
+    .banner-subtitle {
         font-size: 16px;
     }
-}
+} */

@@ -598,7 +598,7 @@ body {
 
 .founders-hero {
     background: linear-gradient(rgba(248, 250, 252, 0.9), rgba(248, 250, 252, 0.9)), var(--bg-pattern);
-    padding: 120px 0 60px;
+    padding: 70px 0 60px;
     text-align: center;
 }
 
@@ -635,7 +635,7 @@ body {
 }
 
 .founders-section {
-    padding: 80px 0;
+    padding: 50px 0;
     background: white;
 }
 
